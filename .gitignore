@@ -2,3 +2,6 @@
 .venv/
 __pychache__/
 *.pyc
+blend_files/
+nevergonna.mp3
+```
