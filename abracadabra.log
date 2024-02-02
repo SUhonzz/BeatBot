@@ -1,0 +1,3 @@
+DEBUG:pydub.converter:subprocess.call(['ffmpeg', '-y', '-i', 'nevergonna.mp3', '-acodec', 'pcm_s16le', '-vn', '-f', 'wav', '-'])
+DEBUG:pydub.converter:subprocess.call(['ffmpeg', '-y', '-i', 'nevergonna.mp3', '-acodec', 'pcm_s16le', '-vn', '-f', 'wav', '-'])
+DEBUG:pydub.converter:subprocess.call(['ffmpeg', '-y', '-i', 'nevergonna.mp3', '-acodec', 'pcm_s16le', '-vn', '-f', 'wav', '-'])

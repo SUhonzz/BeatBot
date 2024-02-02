@@ -10,6 +10,10 @@ with col1:
 
     with tab_learn:
         st.header("Teach new Songs")
-        uploaded_file = st.file_uploader("Upload a song", type=["mp3", "wav"])
+        uploaded_file = st.file_uploader("Upload a song to learn", type=["mp3", "wav"])
         if uploaded_file is not None:
             st.audio(uploaded_file, format='audio/wav')
+
+    with tab_recognize:
+        st.header("Recognize Songs")
+        uploaded_snippet = st.file_uploader("Upload a snippet to recognise", type=["mp3", "wav"])
