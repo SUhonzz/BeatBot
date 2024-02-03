@@ -439,3 +439,11 @@ DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 343 11
 DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 366 19
 DEBUG:PIL.PngImagePlugin:STREAM b'IDAT' 397 8192
 DEBUG:PIL.PngImagePlugin:STREAM b'eXIf' 404379 54
+DEBUG:pydub.converter:subprocess.call(['ffmpeg', '-y', '-i', 'nevergonna.mp3', '-acodec', 'pcm_s16le', '-vn', '-f', 'wav', '-'])
+DEBUG:pydub.converter:subprocess.call(['ffmpeg', '-y', '-i', 'nevergonna.mp3', '-acodec', 'pcm_s16le', '-vn', '-f', 'wav', '-'])
+DEBUG:pydub.converter:subprocess.call(['ffmpeg', '-y', '-i', 'nevergonna.mp3', '-acodec', 'pcm_s16le', '-vn', '-f', 'wav', '-'])
+DEBUG:pydub.converter:subprocess.call(['ffmpeg', '-y', '-i', 'nevergonna.mp3', '-acodec', 'pcm_s16le', '-vn', '-f', 'wav', '-'])
+DEBUG:pydub.converter:subprocess.call(['ffmpeg', '-y', '-i', 'nevergonna.mp3', '-acodec', 'pcm_s16le', '-vn', '-f', 'wav', '-'])
+DEBUG:pydub.converter:subprocess.call(['ffmpeg', '-y', '-i', 'nevergonna.mp3', '-acodec', 'pcm_s16le', '-vn', '-f', 'wav', '-'])
+DEBUG:pydub.converter:subprocess.call(['ffmpeg', '-y', '-i', 'nevergonna.mp3', '-acodec', 'pcm_s16le', '-vn', '-f', 'wav', '-'])
+DEBUG:pydub.converter:subprocess.call(['ffmpeg', '-y', '-i', 'nevergonna.mp3', '-acodec', 'pcm_s16le', '-vn', '-f', 'wav', '-'])
