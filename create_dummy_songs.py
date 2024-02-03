@@ -6,5 +6,4 @@ song2 = Song(artist="Zelda", title="Lorule Main", album="Link Between Worlds")
 
 song1.song_id = store_hashes("nevergonna.mp3")
 print(song1)
-#song1.store_data()
-#song2.store_data()
+

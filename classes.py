@@ -26,6 +26,8 @@ class Hash:
             self.db_connector_h.insert(self.__dict__)
             print("Hash inserted.")
 
+
+
     @classmethod
     def load_data_by_hash(cls, hash):
         # Load data from the database and create an instance of the Hash class
