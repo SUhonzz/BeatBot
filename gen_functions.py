@@ -15,9 +15,11 @@ def store_hashes(audiofile):
 
 
 def recognize(hashes):
+    hashes = [_hash[0] for _hash in hashes]
+    print(hashes)
     matches = {}
-    for hashsin in hashes:
-        result = Hash.load_data_by_hash(hashsin)
+    for _hash in hashes:
+        result = Hash.load_data_by_hash(_hash)
         if result:
             if result.song_id in matches:
                 matches[result.song_id] += 1

@@ -23,7 +23,6 @@ with col1:
             song_artist = st.text_input("Artist")
             song_album = st.text_input("Album")
 
-
             if st.form_submit_button('Teach'):
                 if uploaded_file is not None:
                     new_song = Song(artist=song_artist, title=song_title, album=song_album)
@@ -32,8 +31,6 @@ with col1:
                     st.rerun()
                 else:
                     st.error("Please upload a song to learn")
-                
-                    
 
     with tab_recognize:
         st.header("Recognize Songs")
@@ -44,7 +41,7 @@ with col1:
 
             if st.button('Recognize'):
                 if uploaded_snippet is not None:
-                    hashes = fp.fingerprint_file(uploaded_snippet.name)[0]
+                    hashes = fp.fingerprint_file(uploaded_snippet.name)
                     matches = recognize(hashes)
 
                     for key in matches:
