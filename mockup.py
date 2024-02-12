@@ -24,12 +24,14 @@ with col1:
             song_album = st.text_input("Album")
 
             if st.form_submit_button('Teach'):
+                filename = f"./Samples/{uploaded_file.name}"
                 if uploaded_file is not None:
                     print(uploaded_file.name)
                     new_song = Song(artist=song_artist, title=song_title, album=song_album)
-                    new_song.song_id = store_hashes(uploaded_file.name)
-                    new_song.store_data()
+                    new_song.song_id = store_hashes(filename)
+                    st.write("success")
                     st.rerun()
+                    
                 else:
                     st.error("Please upload a song to learn")
 
@@ -42,7 +44,8 @@ with col1:
 
             if st.button('Recognize'):
                 if uploaded_snippet is not None:
-                    hashes = fp.fingerprint_file(uploaded_snippet.name)
+                    snippet_path = f"./Samples/Cutlets/{uploaded_snippet.name}"
+                    hashes = fp.fingerprint_file(snippet_path)
                     matches = recognize(hashes)
 
                     for key in matches:
