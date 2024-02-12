@@ -25,6 +25,7 @@ with col1:
 
             if st.form_submit_button('Teach'):
                 if uploaded_file is not None:
+                    print(uploaded_file.name)
                     new_song = Song(artist=song_artist, title=song_title, album=song_album)
                     new_song.song_id = store_hashes(uploaded_file.name)
                     new_song.store_data()
