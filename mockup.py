@@ -1,6 +1,8 @@
 import streamlit as st
 from classes import Song,Hash
 from gen_functions import *
+from pydub import AudioSegment
+from tempfile import NamedTemporaryFile
 
 
 st.set_page_config(layout="wide", page_title="Harmonee", page_icon=":musical_note:")
@@ -9,7 +11,7 @@ st.image('./logo_v4.png', width=250)
 col1, col2 = st.columns([0.6, 0.4])
 
 with col1:
-    tab_learn, tab_recognize = st.tabs(['Teach Songs', 'Recognize Songs'])
+    tab_learn, tab_recognize, tab_about = st.tabs(['Teach Songs', 'Recognize Songs','About'])
 
     with tab_learn:
 
@@ -40,7 +42,7 @@ with col1:
                     st.error("Please upload a song to learn")
 
     with tab_recognize:
-        st.header("Recognize Songs")
+        st.header("Recognize Songs from Snippet")
         with st.container(border=True):
             uploaded_snippet = st.file_uploader("Upload a snippet to recognise", type=["mp3", "wav"])
             if uploaded_snippet is not None:
@@ -51,9 +53,75 @@ with col1:
                     snippet_path = f"./Samples/Cutlets/{uploaded_snippet.name}"
                     hashes = generate_hashes(snippet_path)
                     matches = recognize(hashes)
-
+                    if len(matches) == 0:
+                        st.error("No matches found, either teach the song or upload a different snippet.")
                     for key in matches:
-                       st.write(f"Song ID: {match_id_to_song}, Matches: {matches[key]}")
+                       #st.write(f"Song ID: {key}, Matches: {matches[key]}")
+
+                       artist, title, album = get_song_info(key)
+                       if artist is not None:
+                           st.write(f"Artist: {artist}, Title: {title}, Album: {album}")
+                           manage_recognitions(key,artist,title,album)
+                       else:
+                            print("Song ID not found in the database.")
 
                 else:
                     st.error("Please upload a snippet to recognize")
+
+        st.header("Recognize from Microphone")
+
+        with st.container(border=True):
+            if st.button('Start Recording'):
+                record_audio('temp.wav', 5)
+                st.write("Recording complete")
+                st.audio('temp.wav', format='audio/wav')
+                hashes = generate_hashes('temp.wav')
+                matches = recognize(hashes)
+                if len(matches) == 0:
+                    st.error("No matches found, either teach the song or upload a different snippet.")
+                for key in matches:
+                    #st.write(f"Song ID: {key}, Matches: {matches[key]}")
+
+                    artist, title, album = get_song_info(key)
+                    if artist is not None:
+                        st.write(f"Artist: {artist}, Title: {title}, Album: {album}")
+                        manage_recognitions(key,artist,title,album)
+                        
+                    else:
+                        print("Song ID not found in the database.")
+    with tab_about:
+        st.header("About Harmonee")
+        st.write("Harmonee is a song recognition app that uses audio fingerprinting to recognize songs. It uses the Fingerprinting algorithm to generate hashes from audio files and stores them in a database. When a snippet is uploaded, it generates hashes from the snippet and compares them to the database to find a match. It can also record audio from the microphone and recognize songs from it.")
+        st.write("Harmonee is built using Python and Streamlit. It uses the Fingerprinting library for audio fingerprinting and the Pydub library for audio processing.")
+        st.write("Special thanks to the authors of the abracadabra project, which was used as a base for the Fingerprinting algorithm. The source code for abracadabra is available on GitHub at https://github.com/notexactlyawe/abracadabra")
+        st.write("Harmonee is developed by Andreas Thöni, Samuel Peer and Hannes Unterhuber as a part of the final project for the course Introduction to Softwaredesign at the MCI Innsbruck.")
+        st.write("The source code for Harmonee is available on GitHub at https://github.com/SUhonzz/Harmonee")
+
+with col2:
+    st.header("History")
+    links,rechts = st.columns([1,1])
+    with links:
+        st.subheader("Last 5 tought songs")
+        with st.expander("Show last 5 tought songs"):
+            db = TinyDB('hashesDB.json')
+            songs = db.table('songs')
+            result = songs.all()
+            for i in range(len(result)-1,len(result)-6,-1):
+                st.write(f"Title: {result[i]['title']}, Artist: {result[i]['artist']},  Album: {result[i]['album']}, Song ID: {result[i]['song_id']}")
+            db.close()
+    with rechts:
+        st.subheader("Last 5 recognized songs")
+        with st.expander("Show last 5 recognized songs"):
+            db = TinyDB('hashesDB.json')
+            recognitions = db.table('recognitions')
+            result = recognitions.all()
+            for i in range(len(result)-1,len(result)-6,-1):
+                st.write(f"Title: {result[i]['title']}, Artist: {result[i]['artist']},  Album: {result[i]['album']}, Song ID: {result[i]['song_id']}")
+            db.close()
+    
+
+
+
+
+
+
