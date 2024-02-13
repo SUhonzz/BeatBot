@@ -1,6 +1,7 @@
 import streamlit as st
-from classes import Song
+from classes import Song,Hash
 from gen_functions import *
+
 
 st.set_page_config(layout="wide", page_title="Harmonee", page_icon=":musical_note:")
 st.image('./logo_v4.png', width=250)
@@ -25,11 +26,14 @@ with col1:
 
             if st.form_submit_button('Teach'):
                 filename = f"./Samples/{uploaded_file.name}"
+                hashes = generate_hashes(filename)
                 if uploaded_file is not None:
                     print(uploaded_file.name)
                     new_song = Song(artist=song_artist, title=song_title, album=song_album)
-                    new_song.song_id = store_hashes(filename)
-                    st.write("success")
+                    new_song.song_id = hashes[0][2]
+                    print("Hashes stored")
+                    store_song(new_song,hashes)
+                    print("Song stored")
                     st.rerun()
                     
                 else:
@@ -45,11 +49,11 @@ with col1:
             if st.button('Recognize'):
                 if uploaded_snippet is not None:
                     snippet_path = f"./Samples/Cutlets/{uploaded_snippet.name}"
-                    hashes = fp.fingerprint_file(snippet_path)
+                    hashes = generate_hashes(snippet_path)
                     matches = recognize(hashes)
 
                     for key in matches:
-                        st.write(f"Song ID: {key}, Matches: {matches[key]}")
+                       st.write(f"Song ID: {match_id_to_song}, Matches: {matches[key]}")
 
                 else:
                     st.error("Please upload a snippet to recognize")
