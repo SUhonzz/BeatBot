@@ -1,4 +1,5 @@
 [theme]
 base="light"
+primaryColor="#3aa8fc"
 [runner]
 magicEnabled=false

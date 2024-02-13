@@ -136,7 +136,7 @@ with col2:
               max_results=1,
             )
             for r in ddgs_images_gen:
-                print(r)
+                pass
 
             with st.container(border=True):
                 cover, info = st.columns([0.5, 0.5])
