@@ -3,12 +3,13 @@ from classes import Song,Hash
 from gen_functions import *
 from pydub import AudioSegment
 from tempfile import NamedTemporaryFile
-
+from duckduckgo_search import DDGS
 
 st.set_page_config(layout="wide", page_title="Harmonee", page_icon=":musical_note:")
 st.image('./logo_v4.png', width=250)
 
 col1, col2 = st.columns([0.6, 0.4])
+artist, title = None, None
 
 with col1:
     tab_learn, tab_recognize, tab_about = st.tabs(['Teach Songs', 'Recognize Songs','About'])
@@ -118,7 +119,39 @@ with col2:
             for i in range(len(result)-1,len(result)-6,-1):
                 st.write(f"Title: {result[i]['title']}, Artist: {result[i]['artist']},  Album: {result[i]['album']}, Song ID: {result[i]['song_id']}")
             db.close()
-    
+
+    if artist is not None and title is not None:
+        st.header("Song Info")
+        prompt = F'{title} {artist} album cover'
+        with DDGS() as ddgs:
+            keywords = prompt
+            ddgs_images_gen = ddgs.images(
+              keywords,
+              region="wt-wt",
+              safesearch="off",
+              size=None,
+              type_image=None,
+              layout=None,
+              license_image=None,
+              max_results=1,
+            )
+            for r in ddgs_images_gen:
+                print(r)
+
+            with st.container(border=True):
+                cover, info = st.columns([0.5, 0.5])
+                with cover:
+                    st.image(r['image'], caption=r['title'], width=300)
+                with info:
+                    with st.container(border=True):
+                        st.subheader('Artist')
+                        st.write(f"{artist}")
+                    with st.container(border=True):
+                        st.subheader('Title')
+                        st.write(f"{title}")
+                    with st.container(border=True):
+                        st.subheader('Album')
+                        st.write(f"{album}")
 
 
 
