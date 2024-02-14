@@ -102,8 +102,8 @@ with col2:
     st.header("History")
     links,rechts = st.columns([1,1])
     with links:
-        st.subheader("Last 5 tought songs")
-        with st.expander("Show last 5 tought songs"):
+        st.subheader("Last 5 taught songs")
+        with st.expander("Show last 5 taught songs"):
             db = TinyDB('hashesDB.json')
             songs = db.table('songs')
             result = songs.all()
