@@ -4,7 +4,7 @@ from . import settings
 from pydub import AudioSegment
 from scipy.signal import spectrogram
 from scipy.ndimage import maximum_filter
-
+import io
 
 def my_spectrogram(audio):
     """Helper function that performs a spectrogram with the values in settings."""
@@ -27,6 +27,24 @@ def file_to_spectrogram(filename):
     audio = np.frombuffer(a.raw_data, np.int16)
     return my_spectrogram(audio)
 
+def file_to_spectrogram_bytesio(bytesfile):
+    """Calculates the spectrogram of a file.
+
+    Converts a file to mono and resamples to :data:`~abracadabra.settings.SAMPLE_RATE` before
+    calculating. Uses :data:`~abracadabra.settings.FFT_WINDOW_SIZE` for the window size.
+
+    :param bytesfile: Path to the file to spectrogram.
+    :returns: * f - list of frequencies
+              * t - list of times
+              * Sxx - Power value for each time/frequency pair
+    """
+    if type(bytesfile) == str:
+        a = AudioSegment.from_file(bytesfile).set_channels(1).set_frame_rate(settings.SAMPLE_RATE)
+    else:
+        file_io = io.BytesIO(bytesfile.getvalue())
+        a = AudioSegment.from_file(file_io).set_channels(1).set_frame_rate(settings.SAMPLE_RATE)
+    audio = np.frombuffer(a.raw_data, np.int16)
+    return my_spectrogram(audio)
 
 def find_peaks(Sxx):
     """Finds peaks in a spectrogram.
@@ -93,7 +111,7 @@ def target_zone(anchor, points, width, height, t):
         yield point
 
 
-def hash_points(points, filename):
+def hash_points(points, filename, ytlink=None):
     """Generates all hashes for a list of peaks.
 
     Iterates through the peaks, generating a hash for each peak within that peak's target zone.
@@ -103,7 +121,13 @@ def hash_points(points, filename):
     :returns: A list of tuples of the form (hash, time offset, song_id).
     """
     hashes = []
-    song_id = uuid.uuid5(uuid.NAMESPACE_OID, filename).int
+    if type(filename) == str:
+        if ytlink:
+            song_id = uuid.uuid5(uuid.NAMESPACE_OID, ytlink).int
+        else:
+            song_id = uuid.uuid5(uuid.NAMESPACE_OID, filename).int
+    else:
+        song_id = uuid.uuid5(uuid.NAMESPACE_OID, filename.name).int
     for anchor in points:
         for target in target_zone(
             anchor, points, settings.TARGET_T, settings.TARGET_F, settings.TARGET_START
@@ -119,7 +143,7 @@ def hash_points(points, filename):
     return hashes
 
 
-def fingerprint_file(filename):
+def fingerprint_file(filename, ytlink=None):
     """Generate hashes for a file.
 
     Given a file, runs it through the fingerprint process to produce a list of hashes from it.
@@ -127,10 +151,10 @@ def fingerprint_file(filename):
     :param filename: The path to the file.
     :returns: The output of :func:`hash_points`.
     """
-    f, t, Sxx = file_to_spectrogram(filename)
+    f, t, Sxx = file_to_spectrogram_bytesio(filename)
     peaks = find_peaks(Sxx)
     peaks = idxs_to_tf_pairs(peaks, t, f)
-    return hash_points(peaks, filename)
+    return hash_points(peaks, filename, ytlink)
 
 
 def fingerprint_audio(frames):

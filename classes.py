@@ -59,10 +59,12 @@ class Hash:
             # Update the existing record with the current instance's data
             #self.db_connector_h.update(self.__dict__, doc_ids=[result[0].doc_id])
             print("Hashes already exists in the database from classes")
+            return False
         else:
             # If the device doesn't exist, insert a new record
             self.db_connector_h.insert_multiple(data_to_store)
             print("Hash inserted from classes")
+            return True
 
     @classmethod
     def load_data_by_hash(cls, hash_list):
