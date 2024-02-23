@@ -21234,3 +21234,82 @@ DEBUG:PIL.PngImagePlugin:b'tIME' 9509 7 (unknown)
 DEBUG:PIL.PngImagePlugin:STREAM b'IDAT' 9528 8192
 ERROR:asyncio:Task was destroyed but it is pending!
 task: <Task pending name='Task-18353' coro=<AsyncCurl._force_timeout() running at C:\Dateien\Studium\Softwaredesign 1\Harmonee\.venv\lib\site-packages\curl_cffi\aio.py:168> wait_for=<Future cancelled>>
+DEBUG:asyncio:Using selector: SelectSelector
+DEBUG:PIL.PngImagePlugin:STREAM b'IHDR' 16 13
+DEBUG:PIL.PngImagePlugin:STREAM b'eXIf' 41 54
+DEBUG:PIL.PngImagePlugin:STREAM b'IHDR' 16 13
+DEBUG:PIL.PngImagePlugin:STREAM b'oFFs' 107 9
+DEBUG:PIL.PngImagePlugin:STREAM b'eXIf' 41 54
+DEBUG:PIL.PngImagePlugin:b'oFFs' 107 9 (unknown)
+DEBUG:PIL.PngImagePlugin:STREAM b'oFFs' 107 9
+DEBUG:PIL.PngImagePlugin:STREAM b'pHYs' 128 9
+DEBUG:PIL.PngImagePlugin:b'oFFs' 107 9 (unknown)
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 149 72
+DEBUG:PIL.PngImagePlugin:STREAM b'pHYs' 128 9
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 233 24
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 149 72
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 269 16
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 233 24
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 297 9
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 269 16
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 318 13
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 297 9
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 343 11
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 318 13
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 366 19
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 343 11
+DEBUG:PIL.PngImagePlugin:STREAM b'IDAT' 397 8192
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 366 19
+DEBUG:PIL.PngImagePlugin:STREAM b'IHDR' 16 13
+DEBUG:PIL.PngImagePlugin:STREAM b'IDAT' 397 8192
+DEBUG:PIL.PngImagePlugin:STREAM b'eXIf' 41 54
+DEBUG:PIL.PngImagePlugin:STREAM b'IHDR' 16 13
+DEBUG:PIL.PngImagePlugin:STREAM b'oFFs' 107 9
+DEBUG:PIL.PngImagePlugin:STREAM b'eXIf' 41 54
+DEBUG:PIL.PngImagePlugin:b'oFFs' 107 9 (unknown)
+DEBUG:PIL.PngImagePlugin:STREAM b'oFFs' 107 9
+DEBUG:PIL.PngImagePlugin:STREAM b'pHYs' 128 9
+DEBUG:PIL.PngImagePlugin:b'oFFs' 107 9 (unknown)
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 149 72
+DEBUG:PIL.PngImagePlugin:STREAM b'pHYs' 128 9
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 233 24
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 149 72
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 269 16
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 233 24
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 297 9
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 269 16
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 318 13
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 297 9
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 343 11
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 318 13
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 366 19
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 343 11
+DEBUG:PIL.PngImagePlugin:STREAM b'IDAT' 397 8192
+DEBUG:PIL.PngImagePlugin:STREAM b'tEXt' 366 19
+DEBUG:PIL.PngImagePlugin:STREAM b'IDAT' 397 8192
+DEBUG:PIL.PngImagePlugin:STREAM b'eXIf' 404379 54
+DEBUG:PIL.PngImagePlugin:STREAM b'eXIf' 404379 54
+DEBUG:PIL.PngImagePlugin:STREAM b'IHDR' 16 13
+DEBUG:PIL.PngImagePlugin:STREAM b'zTXt' 41 5652
+DEBUG:PIL.PngImagePlugin:STREAM b'iCCP' 5705 389
+DEBUG:PIL.PngImagePlugin:iCCP profile name b'ICC profile'
+DEBUG:PIL.PngImagePlugin:Compression method 0
+DEBUG:PIL.PngImagePlugin:STREAM b'iTXt' 6106 3352
+DEBUG:PIL.PngImagePlugin:STREAM b'bKGD' 9470 6
+DEBUG:PIL.PngImagePlugin:b'bKGD' 9470 6 (unknown)
+DEBUG:PIL.PngImagePlugin:STREAM b'pHYs' 9488 9
+DEBUG:PIL.PngImagePlugin:STREAM b'tIME' 9509 7
+DEBUG:PIL.PngImagePlugin:b'tIME' 9509 7 (unknown)
+DEBUG:PIL.PngImagePlugin:STREAM b'IDAT' 9528 8192
+DEBUG:PIL.PngImagePlugin:STREAM b'IHDR' 16 13
+DEBUG:PIL.PngImagePlugin:STREAM b'zTXt' 41 5652
+DEBUG:PIL.PngImagePlugin:STREAM b'iCCP' 5705 389
+DEBUG:PIL.PngImagePlugin:iCCP profile name b'ICC profile'
+DEBUG:PIL.PngImagePlugin:Compression method 0
+DEBUG:PIL.PngImagePlugin:STREAM b'iTXt' 6106 3352
+DEBUG:PIL.PngImagePlugin:STREAM b'bKGD' 9470 6
+DEBUG:PIL.PngImagePlugin:b'bKGD' 9470 6 (unknown)
+DEBUG:PIL.PngImagePlugin:STREAM b'pHYs' 9488 9
+DEBUG:PIL.PngImagePlugin:STREAM b'tIME' 9509 7
+DEBUG:PIL.PngImagePlugin:b'tIME' 9509 7 (unknown)
+DEBUG:PIL.PngImagePlugin:STREAM b'IDAT' 9528 8192

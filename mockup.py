@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-import streamlit_scrollable_textbox as stx
+#import streamlit_scrollable_textbox as stx
 
 from classes import Song,Hash
 from gen_functions import *
@@ -207,7 +207,8 @@ with col2:
         else:
             lyrics = None
         if lyrics:
-            stx.scrollableTextbox(lyrics, height=300)
+            #stx.scrollableTextbox(lyrics, height=300)
+            st.text(lyrics)
         else:
             st.warning("No lyrics found for this song")
 
