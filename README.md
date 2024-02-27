@@ -1,12 +1,7 @@
-# Harmonee
+# Harmonee  
+Audioerkennungssoftware ala Shazam/Soundhound mit WebUI.  
+  
 Teammitglieder:  
 Andreas Thöni  Hannes Unterhuber  Samuel Peer    
-Audioerkennung Features: Erkennung über Spektographische Analyse    
 
-ToDo: 
--Noch etwas ungenau, eventuell die Windowsize erhöhen?
--Aufnahme von Snippets über PC_mikro
--DDGO API für Albumcovers durchforsten
--wav und spektrogramm abbilden und in streamlit ausgeben
--History von eingelernten und erkannten Songs anzeigen
--Grafische Ausarbeitung für Webinterface?
+Programmfunktionen und Erweiterungen in "THOENI_UNTERHUBER_PEER_Projektbericht.pdf"
